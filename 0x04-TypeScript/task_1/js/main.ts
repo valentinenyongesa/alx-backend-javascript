@@ -1,21 +1,14 @@
-interface Teacher {
-    firstName: string;
-    lastName: string;
-    fullTimeEmployee: boolean;
-    yearsOfExperience?: number;
-    location: string;
-    [key: string]: any;
-}
-
-class TeacherClass implements Teacher {
-    constructor(public firstName: string, public lastName: string, public fullTimeEmployee: boolean, public location: string, public yearsOfExperience?: number) {
-        Object.defineProperty(this, 'firstName', { writable: false });
-        Object.defineProperty(this, 'lastName', { writable: false });
-    }
+interface Directors extends Teacher {
+    numberOfReports: number;
 }
 
 // Example usage
-const teacher3 = new TeacherClass('John', 'Doe', false, 'London');
-teacher3.contract = false;
+const director1: Directors = {
+    firstName: 'John',
+    lastName: 'Doe',
+    fullTimeEmployee: true,
+    location: 'London',
+    numberOfReports: 17
+};
 
-console.log(teacher3);
+console.log(director1);
