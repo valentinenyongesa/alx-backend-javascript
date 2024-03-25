@@ -1,20 +1,10 @@
-interface Teacher {
-  firstName: string;
-  lastName: string;
-  location: string;
-  fullTimeEmployee: boolean;
+interface PrintTeacherFunction {
+  (firstName: string, lastName: string): string;
 }
 
-interface Directors extends Teacher {
-  numberOfReports: number;
-}
-
-const director1: Directors = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
+const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
 };
 
-console.log(director1);
+// Example usage:
+console.log(printTeacher("John", "Doe")); // Output: J. Doe
