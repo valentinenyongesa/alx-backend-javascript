@@ -15,7 +15,7 @@ const databasePath = process.argv[2];
 // Pass the database path to the request object
 app.use((req, res, next) => {
   req.databasePath = databasePath;
-  next();
+  next(); // Passing control to the next middleware
 });
 
 // Use the routes defined in full_server/routes/index.js
@@ -27,13 +27,13 @@ app.use((req, res) => {
 });
 
 // Error handling for internal server errors
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(500).send('Internal Server Error');
 });
 
 // Start the server
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server is running and listening on port ${port}`);
 });
 
