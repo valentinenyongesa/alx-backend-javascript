@@ -1,8 +1,8 @@
 // full_server/server.js
 
 import express from 'express';
-import routes from './routes';
 import path from 'path';
+import routes from './routes';
 
 const app = express();
 

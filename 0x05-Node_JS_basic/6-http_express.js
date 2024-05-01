@@ -5,20 +5,34 @@ const express = require('express');
 // Create an Express application
 const app = express();
 
-// Define a route handler for the root path
+// Define a route for the root path
 app.get('/', (req, res) => {
-  res.send('Hello Holberton School!\n');
+  res.send('Hello Holberton School!');
 });
 
-// Define a default route handler for all other paths
+// Define a route for other paths
 app.use((req, res) => {
-  res.status(404).send('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Error</title></head><body><pre>Cannot GET ' + req.url + '</pre></body></html>');
+  res.status(404).send(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <title>Error</title>
+        </head>
+        <body>
+            <pre>Cannot GET ${req.url}</pre>
+        </body>
+        </html>
+    `);
 });
 
-// Set the server to listen on port 1245
+// Start the server and listen on port 1245
 const server = app.listen(1245, () => {
   console.log('Server is running and listening on port 1245');
 });
 
-// Export the app variable
+// Use the server variable somewhere in your code
+console.log('Express server:', server);
+
+// Export the Express application
 module.exports = app;
