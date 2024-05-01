@@ -1,7 +1,7 @@
 // 5-http.js
 
 const http = require('http');
-const { countStudents } = require('./3-read_file_async');
+const readFileAsync = require('./3-read_file_async');
 
 // Create an HTTP server
 const app = http.createServer((req, res) => {
@@ -19,7 +19,7 @@ const app = http.createServer((req, res) => {
   } else if (path === '/students') {
     // Read the database file asynchronously and send the result for the /students path
     const databasePath = process.argv[2];
-    countStudents(databasePath)
+    readFileAsync.countStudents(databasePath)
       .then(() => {
         res.end();
       })
