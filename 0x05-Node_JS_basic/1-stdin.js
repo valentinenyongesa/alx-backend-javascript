@@ -1,19 +1,16 @@
 // 1-stdin.js
 
-// Display initial message
-process.stdout.write('Welcome to Holberton School, what is your name?\n');
+console.log('Welcome to Holberton School, what is your name?');
 
-// Listen for user input
+// Event listener for user input
 process.stdin.on('data', (data) => {
-  // Extract the input (remove trailing newline character)
+  // Convert input data to string and remove trailing newline characters
   const input = data.toString().trim();
 
   // Display the user's name
   console.log(`Your name is: ${input}`);
-});
 
-// Listen for the end of input (user ends the program)
-process.stdin.on('end', () => {
-  // Display closing message
+  // Close the program
   console.log('This important software is now closing');
+  process.exit();
 });
