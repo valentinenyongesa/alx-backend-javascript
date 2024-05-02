@@ -1,0 +1,14 @@
+{
+  "name": "alx-backend-javascript",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^9.2.2"
+  }
+}
