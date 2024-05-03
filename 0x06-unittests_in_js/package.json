@@ -8,7 +8,10 @@
   },
   "author": "Your Name",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
+    "chai": "^5.1.0",
+    "esm": "^3.2.25",
     "mocha": "^9.2.2"
   }
 }
