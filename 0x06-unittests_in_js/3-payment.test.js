@@ -1,16 +1,19 @@
-// 3-payment.test.js
+const { expect } = require('chai');
+const sinon = require('sinon');
+const Utils = require('./utils');
+const { sendPaymentRequestToApi } = require('./3-payment');
 
-import { expect } from 'chai';
-import sinon from 'sinon';
-import { sendPaymentRequestToApi } from './3-payment.js';
-import Utils from './utils.js';
+describe('sendPaymentRequestToApi', function() {
+  it('should call Utils.calculateNumber with the correct arguments and log the result', function() {
+    const calculateNumberStub = sinon.stub(Utils, 'calculateNumber').returns(120);
+    const consoleSpy = sinon.spy(console, 'log');
 
-describe('sendPaymentRequestToApi', function () {
-  it('should call Utils.calculateNumber with correct arguments', function () {
-    const calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
     sendPaymentRequestToApi(100, 20);
-    expect(calculateNumberSpy.calledOnce).to.be.true;
-    expect(calculateNumberSpy.calledWith('SUM', 100, 20)).to.be.true;
-    calculateNumberSpy.restore();
+
+    expect(calculateNumberStub.calledWithExactly('SUM', 100, 20)).to.be.true;
+    expect(consoleSpy.calledWithExactly('The total is: 120')).to.be.true;
+
+    calculateNumberStub.restore();
+    consoleSpy.restore();
   });
 });
