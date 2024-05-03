@@ -1,26 +1,35 @@
-import { expect } from 'chai';
-import calculateNumber from './2-calcul_chai.js';
+const chai = require('chai');
+const expect = chai.expect;
+const calculateNumber = require('./2-calcul_chai');
 
-describe('calculateNumber', function() {
-  describe('SUM', function() {
-    it('should return the sum of two numbers', function() {
-      expect(calculateNumber('SUM', 1, 2)).to.equal(3);
-    });
-  });
-
-  describe('SUBTRACT', function() {
-    it('should return the subtraction of two numbers', function() {
-      expect(calculateNumber('SUBTRACT', 5, 3)).to.equal(2);
-    });
-  });
-
-  describe('DIVIDE', function() {
-    it('should return the division of two numbers', function() {
-      expect(calculateNumber('DIVIDE', 6, 2)).to.equal(3);
+describe('calculateNumber function', () => {
+    describe('type SUM', () => {
+        it('should return the rounded sum of two numbers', () => {
+            expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
+        });
     });
 
-    it('should return "Error" if the divisor is 0', function() {
-      expect(calculateNumber('DIVIDE', 6, 0)).to.equal('Error');
+    describe('type SUBTRACT', () => {
+        it('should return the rounded subtraction of two numbers', () => {
+            expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
+        });
     });
-  });
+
+    describe('type DIVIDE', () => {
+        it('should return the rounded division of two numbers', () => {
+            expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
+        });
+
+        it('should return "Error" when trying to divide by 0', () => {
+            expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
+        });
+    });
+
+    describe('invalid type', () => {
+        it('should throw an error for an invalid type', () => {
+            expect(() => {
+                calculateNumber('INVALID', 1.4, 4.5);
+            }).to.throw(Error);
+        });
+    });
 });
